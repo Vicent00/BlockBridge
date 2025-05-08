@@ -10,29 +10,48 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo y Nombre */}
-          <div className="flex items-center space-x-2">
+          <Link 
+            href="/" 
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity cursor-pointer"
+          >
             <Image
-              src="/V.png" // Asegúrate de tener tu logo en la carpeta public
+              src="/V.png"
               alt="Logo"
               width={40}
               height={40}
               className="w-10 h-10"
             />
-            <Link href="/" className="text-xl font-bold text-gray-800">
+            <span className="text-xl font-bold text-gray-800">
                 BlockBridge
-            </Link>
-          </div>
+            </span>
+          </Link>
 
           {/* Navegación */}
           <nav className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-600 hover:text-gray-900">
-              Inicio
-            </Link>
-            <Link href="/dashboard" className="text-gray-600 hover:text-gray-900">
-              Dashboard
-            </Link>
-            <Link href="/about" className="text-gray-600 hover:text-gray-900">
-              Acerca de
+            <Link 
+              href="/about" 
+              className="
+                relative
+                font-bold 
+                text-gray-800 
+                hover:text-gray-900 
+                font-medium 
+                transition-colors 
+                duration-300
+                after:content-[''] 
+                after:absolute 
+                after:w-full 
+                after:h-0.5 
+                after:bg-indigo-500 
+                after:left-0 
+                after:-bottom-1 
+                after:scale-x-0 
+                after:transition-transform 
+                after:duration-300 
+                hover:after:scale-x-100
+              "
+            >
+              About us
             </Link>
           </nav>
 
