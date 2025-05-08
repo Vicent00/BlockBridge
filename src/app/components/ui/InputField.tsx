@@ -124,7 +124,7 @@ export function InputForm({
 
     // Load from localStorage on mount
     useEffect(() => {
-        if (storageKey && !value) {
+        if (storageKey) {
             const savedValue = localStorage.getItem(storageKey);
             if (savedValue) {
                 setLocalValue(savedValue);
@@ -136,7 +136,7 @@ export function InputForm({
                 }
             }
         }
-    }, [storageKey, onChange, value]);
+    }, [storageKey, onChange]);
 
     // Save to localStorage when value changes
     useEffect(() => {
@@ -147,20 +147,19 @@ export function InputForm({
 
     // Sync local value with prop value
     useEffect(() => {
-        if (value !== undefined) {
-            setLocalValue(value);
-        }
+        setLocalValue(value || '');
     }, [value]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const newValue = e.target.value;
         setLocalValue(newValue);
+        setIsDirty(true);
         
         if (onChange) {
             onChange(e);
         }
 
-        // Solo validamos si el campo está sucio y tiene un valor
+        // Only validate if the field is dirty and has a value
         if (isDirty && newValue) {
             validateInput(newValue);
         }
@@ -168,8 +167,9 @@ export function InputForm({
 
     const handleBlur = () => {
         setIsFocused(false);
+        setIsDirty(true);
+        // Only validate on blur if there's a value
         if (localValue) {
-            setIsDirty(true);
             validateInput(localValue);
         }
     };
@@ -185,7 +185,7 @@ export function InputForm({
         py-4 px-6
         border-2
         ${errors.length > 0 ? 'border-red-500/50' : isFocused ? 'border-indigo-500/50' : 'border-zinc-700/50'}
-        placeholder:text-zinc-500
+        placeholder:text-zinc-200
         text-zinc-100
         text-lg
         shadow-lg
