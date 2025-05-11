@@ -2,8 +2,6 @@
 
 > The Ultimate Token Distribution Platform for Web3
 
-![Token Sender DApp](https://raw.githubusercontent.com/yourusername/token-sender-dapp/main/public/banner.png)
-
 ## 🌟 Why Token Sender?
 
 - 🔐 Secure wallet integration
