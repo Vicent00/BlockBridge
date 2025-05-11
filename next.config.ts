@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   distDir: "out",
-  assetPrefix: "./",
+  assetPrefix: "/",
   basePath: "",
   trailingSlash: true,
 
